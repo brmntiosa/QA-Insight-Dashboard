@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  QA Insight AI-Powered Bug Documentation Tool
 
-## Getting Started
+QA Insight merupakan project web application berbasis Next.js yang membantu tim QA mengubah screenshot bug menjadi laporan terstruktur secara otomatis menggunakan AI.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+*  Upload screenshot bug
+*  AI auto-generate bug report (title, steps, severity, dll)
+*  Editable result (user tetap bisa refine)
+*  Fast analysis menggunakan Gemini 2.5 Flash
+*  Structured output (clean & readable)
+*  Modern UI (Next.js + Tailwind)
+
+---
+
+## Problem Statement
+
+Dalam banyak tim QA:
+
+* Dokumentasi bug dilakukan manual (Excel / docs)
+* Tidak konsisten (format berbeda-beda)
+* Memakan waktu (copy-paste + penulisan ulang)
+
+QA Insight menyelesaikan ini dengan:
+
+> Mengubah screenshot menjadi laporan bug terstruktur secara otomatis.
+
+---
+
+##  Tech Stack
+
+* **AI Development Tooling**: Gemini CLI
+* **Frontend**: Next.js (App Router)
+* **UI**: Tailwind CSS + shadcn/ui
+* **AI Integration**: Google Gemini API (gemini-2.5-flash)
+* **State Management**: React Hooks
+* **API Layer**: Next.js Route Handlers
+
+---
+
+## Gemini CLI Workflow (Key Highlight)
+
+Project ini dikembangkan menggunakan **Gemini CLI** sebagai AI development assistant.
+
+
+---
+
+###  ChatGPT (System Design & Architecture)
+
+Digunakan untuk:
+
+* Mendesain arsitektur aplikasi
+* Merancang flow System
+* Menentukan data schema
+
+---
+
+###  Gemini CLI (Execution & Iteration)
+
+Digunakan sebagai hands-on development assistant:
+
+* Code generation & refactoring
+* Debugging (module error, API error, runtime error)
+* Iterative improvements (UI, API, AI integration)
+
+---
+
+###  How They Work Together
+
+* ChatGPT → **planning layer**
+* Gemini CLI → **execution layer**
+
+
+---
+
+
+##  Project Structure
+
+```id="w9dn4p"
+qa-insight/
+├── app/
+│   ├── api/analyze/route.ts     # AI endpoint
+│   ├── layout.tsx
+│   └── page.tsx                # Main UI
+├── src/
+│   └── ai/gemini.ts            # AI integration logic
+├── components/
+│   └── ui/
+├── lib/
+│   └── utils.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+##  Setup & Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Clone repo
 
-## Learn More
+```bash id="k3o6ve"
+git clone https://github.com/your-username/qa-insight.git
+cd qa-insight
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Install dependencies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash id="r6q5l1"
+npm install
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Setup environment variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Buat file `.env.local`
+
+```env id="g9a2zm"
+GEMINI_API_KEY=your_api_key_here
+```
+
+---
+
+### 4. Run project
+
+```bash id="9e4y0v"
+npm run dev
+```
+
+---
+
+##  How It Works
+
+1. User upload screenshot bug
+2. Image dikonversi ke base64
+3. Request dikirim ke `/api/analyze`
+4. Gemini AI memproses image
+5. Output JSON ditampilkan di UI
+6. User bisa edit sebelum finalize
+
+---
+
+##  Future Improvements
+
+*  Save bug report (database)
+*  Dashboard analytics
+*  Filtering & search
+*  Jira / Notion integration
+*  Export PDF
+
+---
+
+
+
+##  Note
+
+> This project is not only about AI integration,
+> but also about leveraging AI tools (Gemini CLI, OpenClaw, Claude Code, etc)
+> to accelerate real-world product development.
+
+---
